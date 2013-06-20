@@ -11,7 +11,16 @@
 	<header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="brand" style="float:right;">
-          <span class="pull-right"> Kappa Sigma Loves <%= Chapter.find(session[:chapter]).name %> </span>
+          <span class="pull-right">
+
+            <% if(session[:chapter]) %> 
+              Kappa Sigma Loves <%= Chapter.find(session[:chapter]).name %> 
+            <% else %>
+              Kappa Sigma Loves You
+            <% end %>
+
+
+         </span>
         </div>
       </div>
     </header>
