@@ -4,6 +4,17 @@ class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @orders = @item.orders.all
+    @ordersbyChapter = @orders.group_by { |obj| obj.chapter_id }
+    @ordersbySize = @orders.group_by { |obj| obj.size }
+    @totalsbySize = Hash.new
+    @ordersbySize.each do |size_id, orders|
+      sum=0
+      orders.each do |order|
+        sum+= order.quantity
+      end
+      @totalsbySize[size_id] = sum
+
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +27,9 @@ class OrdersController < ApplicationController
   def show
     @item = Item.find(params[:item_id])
     @order = Order.find(params[:id])
+
+
+
 
     respond_to do |format|
       format.html # show.html.erb
