@@ -8,3 +8,17 @@
     data-name="<%= @item.name %>"
     data-amount="<%= @total %>"
 ></script>
+
+<%= form_for [@item, @order] do |f| %>
+    <%= f.hidden_field :chapter_id, :value => session[:chapter] %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.hidden_field :first_name, :value => @order.first_name %>
+    <%= f.hidden_field :last_name, :value => @order.last_name %>
+    <%= f.hidden_field :quantity, :value => @order.quantity %>
+    <%= f.hidden_field :size, :value => @order.size %>
+
+
+
+<%= f.submit %>
+<% end %>
+

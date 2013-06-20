@@ -104,6 +104,7 @@ class OrdersController < ApplicationController
   def confirm
     @item = Item.find(params[:item_id])
     @order = Order.new(params[:order])
+    
     @price = @item.preorderdate && Date.today < @item.preorderdate ? @item.preorderprice : @item.price
     @total = @price * @order.quantity
 
