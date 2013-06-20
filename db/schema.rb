@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619195013) do
+ActiveRecord::Schema.define(:version => 20130620011642) do
 
   create_table "chapters", :force => true do |t|
     t.string   "name"
@@ -21,13 +21,24 @@ ActiveRecord::Schema.define(:version => 20130619195013) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
-    t.float    "price"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "chapter_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.integer  "size"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "sessions", :force => true do |t|

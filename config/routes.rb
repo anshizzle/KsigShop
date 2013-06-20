@@ -1,6 +1,10 @@
 Ksigshop::Application.routes.draw do
-  resources :chapters
-  resources :items
+ 
+
+  resources :chapters 
+  resources :items do
+    resources :orders
+  end
   resources :sessions, only: [:new, :create, :destroy]
 
   root :to => 'home#index'

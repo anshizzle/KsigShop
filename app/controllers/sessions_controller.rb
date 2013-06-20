@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 	def create
 		#Redirect to items page
 		session[:chapter] = params[:section][:chapter]
+		session[:admin] = false
 		@chapters = Chapter.all
 
 		#render 'new'

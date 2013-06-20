@@ -1,0 +1,46 @@
+<% provide(:title, "Place Order") %>
+
+<%= form_for [@item, @order], :html => {:class => "form-inline"} do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :chapter_id, :value => session[:chapter] %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+  <table>
+    <tr> 
+      <th></th>
+      <th></th>
+    </tr>
+
+    <tr>
+      <td><%= f.label :first_name %></td>
+      <td><%= f.text_field :first_name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :last_name %></td>
+      <td><%= f.text_field :last_name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :quantity %></td>
+      <td><%= f.number_field :quantity, {:min => 1,} %></td>
+    </tr>
+      
+    <tr>
+      <td><%= f.label :size %></td>
+      <td><%= f.select :size, options_for_select([["Small", 1], ["Medium", 2], ["Large", 3], ["X-Large", 4]]) %></td>
+    </tr>
+  
+    <tr>
+      <td colspan="2"><%= f.submit %> </td>
+    </tr>
+  </table>
+  
+<% end %>

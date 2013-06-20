@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ksigshop</title>
+  <title><%= full_title(yield(:title)) %> </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag	 "bootstrap", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1> Kappa Sigma Loves <%= Chapter.find(session[:chapter]).name %></h1>
 
+	<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="brand" style="float:right;">
+          <span class="pull-right"> Kappa Sigma Loves <%= Chapter.find(session[:chapter]).name %> </span>
+        </div>
+      </div>
+    </header>
 
-<%= yield %>
+ 
+    <div class="container" >
+    	<%= yield %> <br / >
+ 
 
-
+ <%= link_to "Back To Shop", items_path %>
+    </div>
  <div class="container">
       <%= debug(params) if Rails.env.development? %>
     </div>
