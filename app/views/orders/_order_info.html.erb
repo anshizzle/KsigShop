@@ -1,0 +1,21 @@
+<table>
+	<tr>
+		<td>Name: </td>
+		<td><%= @order.first_name + " " + @order.last_name %></td>
+	</tr>
+	
+	<tr>
+		<td>Quantity: </td>
+		<td><%= @order.quantity %></td>
+	</tr>
+	<tr>
+		<td>Size: </td>
+		<td>  <%= convert_size(@order.size) %></td>
+	</tr>
+
+	<tr>
+		<td>Total: </td>
+		<td> <%=  number_to_currency(@total, :unit => "$") %> </td>
+	</tr>
+
+</table>

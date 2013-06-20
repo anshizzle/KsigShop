@@ -3,16 +3,26 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Price</th>
     <th></th>
-    <th></th>
+    <% if session[:admin] %>
+     <th></th>
+     <th></th>
+    <% end %>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
+    <td> <%= image_tag item.picture.url(:thumb) %> </td>
     <td><%= link_to item.name,item %></td>
     <td><%= number_to_currency(item.price, :unit => "$") %></td>
+  
+    <td><% if item.preorderdate && Date.today < item.preorderdate %>
+       <b>Pre-Order Now! Only <%= number_to_currency(item.preorderprice, :unit => "$") %>. Offer Expires on <%= item.preorderdate.strftime('%m/%d/%Y') %></b>
+       <% end %>
+    </td>
   <% if session[:admin] %>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -21,6 +31,9 @@
   </tr>
 <% end %>
 </table>
+
+
+
 
 <br />
 <% if session[:admin] %>

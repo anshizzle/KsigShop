@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620011642) do
+ActiveRecord::Schema.define(:version => 20130620053722) do
 
   create_table "chapters", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20130620011642) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.decimal  "price",                :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "preorderprice",        :precision => 8, :scale => 2, :default => 0.0
+    t.date     "preorderdate"
   end
 
   create_table "orders", :force => true do |t|

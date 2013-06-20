@@ -1,6 +1,6 @@
 <% provide(:title, "Place Order") %>
 
-<%= form_for [@item, @order], :html => {:class => "form-inline"} do |f| %>
+<%= form_for [@item, @order], :url => {:action => 'confirm' } do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -38,6 +38,14 @@
       <td><%= f.select :size, options_for_select([["Small", 1], ["Medium", 2], ["Large", 3], ["X-Large", 4]]) %></td>
     </tr>
   
+    <tr> 
+      <td> Total </td>
+      <td id="order_total">$0.00 </td>
+    </tr>
+
+    <tr>
+     </tr>
+
     <tr>
       <td colspan="2"><%= f.submit %> </td>
     </tr>

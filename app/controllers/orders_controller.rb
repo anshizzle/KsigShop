@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   def new
     @item = Item.find(params[:item_id])
     @order = @item.orders.new
-
+    @price = @item.preorderdate && Date.today < @item.preorderdate ? @item.preorderprice : @item.price
 
     respond_to do |format|
       format.html # new.html.erb
@@ -100,4 +100,13 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def confirm
+    @item = Item.find(params[:item_id])
+    @order = Order.new(params[:order])
+    @price = @item.preorderdate && Date.today < @item.preorderdate ? @item.preorderprice : @item.price
+    @total = @price * @order.quantity
+
+  end
+
 end

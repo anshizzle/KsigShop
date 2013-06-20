@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<%= image_tag @item.picture.url(:full) %>
+
+
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@price, :unit => "$") %>
+</p>
+
+<p>
+<%= javascript_tag do %>
+	price = <%= @price %>
+<% end %>

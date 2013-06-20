@@ -1,0 +1,10 @@
+<h3> Confirm Your Order For <%= @item.name %> </h3>
+
+<%= render "item_info" %>
+<%= render "order_info" %>
+
+<script src="assets/paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
+    data-button="buynow"
+    data-name="<%= @item.name %>"
+    data-amount="<%= @total %>"
+></script>
