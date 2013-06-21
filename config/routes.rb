@@ -1,6 +1,6 @@
 Ksigshop::Application.routes.draw do
  
-
+  resources :payment_notifications
   resources :chapters 
   resources :items do
     resources :orders do

@@ -10,6 +10,7 @@
     <th>Last name</th>
     <th>Quantity</th>
     <th>Size</th>
+    <th>Paid?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,6 +22,7 @@
     <td><%= order.last_name %></td>
     <td><%= order.quantity %></td>
     <td><%= convert_size(order.size) %></td>
+    <td><%= order.paid %> </td>
     <td><%= link_to 'Show', item_order_path(@item, order) %></td>
     <td><%= link_to 'Edit', edit_item_order_path(@item, order) %></td>
   </tr>

@@ -1,0 +1,20 @@
+development:
+  environment: "sandbox"
+  username: "mysigmashop-facilitator_api1.gmail.com"
+  password: "1371752318"
+  signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31ATBM59kIjxjv-aJ.3-1IBG0imBMe"
+  application_id: "APP-80W284485P519543T"
+
+test:
+  environment: "sandbox"
+  username: "platts_xxxxxxxx_biz_api1.gmail.com"
+  password: "xxxxxxxx"
+  signature: "xxxxxxxx"
+  application_id: "APP-80W284485P519543T"
+
+production:
+  environment: "production"
+  username: "my_production_username"
+  password: "my_production_password"
+  signature: "my_production_signature"
+  application_id: "my_production_app_id"

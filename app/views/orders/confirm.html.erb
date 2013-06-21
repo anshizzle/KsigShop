@@ -3,12 +3,6 @@
 <%= render "item_info" %>
 <%= render "order_info" %>
 
-<script src="assets/paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
-    data-button="buynow"
-    data-name="<%= @item.name %>"
-    data-amount="<%= @total %>"
-></script>
-
 <%= form_for [@item, @order] do |f| %>
     <%= f.hidden_field :chapter_id, :value => session[:chapter] %>
     <%= f.hidden_field :item_id, :value => @item.id %>
@@ -16,9 +10,9 @@
     <%= f.hidden_field :last_name, :value => @order.last_name %>
     <%= f.hidden_field :quantity, :value => @order.quantity %>
     <%= f.hidden_field :size, :value => @order.size %>
-
-
-
 <%= f.submit %>
+
+<%= link_to "Pay Now", @order.paypal_url(items_url, payment_notifications_url) %>
+
 <% end %>
 
