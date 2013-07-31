@@ -15,7 +15,7 @@
 
 	<tr>
 		<td>Total: </td>
-		<td> <%=  number_to_currency(@total, :unit => "$") %> </td>
+		<td> <%=  number_to_currency(@order.quantity * @order.price, :unit => "$") %> </td>
 	</tr>
 
 </table>

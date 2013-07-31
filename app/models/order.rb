@@ -8,9 +8,9 @@ class Order < ActiveRecord::Base
   belongs_to :item
 
   validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
-  validates :first_name, :last_name, :presence => true
+  validates :first_name, :last_name, :chapter_id, :item_id, :quantity, :size, :presence => true
 
-  def paypal_url(return_url)
+  def paypal_url(return_url, notify_url)
  	values = {
  	    :business => 'mysigmashop-facilitator@gmail.com',
   		:cmd => '_xclick',

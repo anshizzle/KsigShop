@@ -3,6 +3,7 @@
 
 
 <% @ordersbyChapter.each do |chapter_id, orders| %>
+    
     <h5><%= Chapter.find(chapter_id).name %></h5>
     <table>
   <tr>

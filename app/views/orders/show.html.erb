@@ -30,6 +30,16 @@
   <%= @order.size %>
 </p>
 
+<p>
+  <b>Total:</b>
+  <%= @order.price * @order.quantity %>
+</p>
+
+<p>
+  <b>Order paid?</b>
+  <%= @order.paid %>
+</p>
+
 
 <%= link_to 'Edit', edit_item_order_path(@item, @order) %> |
 <%= link_to 'Back', item_path(@item) %>

@@ -3,16 +3,6 @@
 <%= render "item_info" %>
 <%= render "order_info" %>
 
-<%= form_for [@item, @order] do |f| %>
-    <%= f.hidden_field :chapter_id, :value => session[:chapter] %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.hidden_field :first_name, :value => @order.first_name %>
-    <%= f.hidden_field :last_name, :value => @order.last_name %>
-    <%= f.hidden_field :quantity, :value => @order.quantity %>
-    <%= f.hidden_field :size, :value => @order.size %>
-<%= f.submit %>
 
-<%= link_to "Pay Now", @order.paypal_url(items_url, payment_notifications_url) %>
-
-<% end %>
+<%= link_to "Confirm and Pay", @order.paypal_url(item_orders_url(@item), payment_notifications_url) %>
 
